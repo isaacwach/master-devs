@@ -203,3 +203,8 @@ class ProjectDescription(APIView):
         project = self.get_project(pk)
         project.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+#logout method to logout a user already logged into the application
+@login_required
+def logout(request):
+    django_logout(request)
+    return  HttpResponseRedirect('/')
