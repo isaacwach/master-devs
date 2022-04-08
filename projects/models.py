@@ -55,4 +55,16 @@ class Location(models.Model):
     #method to delete a location
     def delete_location(self):
         self.delete()
-        
+
+#Tag class model that inherits from models.Model and creates a tag
+class tags(models.Model):
+    name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
+
+    def save_tags(self):
+        self.save()
+
+    def delete_tags(self):
+        self.delete()
