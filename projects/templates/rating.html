@@ -1,6 +1,7 @@
 {%include 'django_registration/base.html'%}
 {% load static %}
 {% load crispy_forms_tags %}
+<!-- block styles with css files for styling the rating page -->
 {% block styles %}
 <link rel="stylesheet" href="{% static 'css/awwwards.css' %}">
 <link rel="stylesheet" href="{% static 'js/jquery.easypiechart.js' %}">
@@ -132,7 +133,6 @@
 <script>
   $(function () {
     $('.chart').easyPieChart({
-      //your options goes here
     });
   });
 </script>
