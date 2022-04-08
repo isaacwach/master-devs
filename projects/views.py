@@ -44,7 +44,30 @@ def project(request):
             }
             return render(request,'project.html', context)
 
-        @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
+def project(request):
+    current_user = request.user
+    profiles = Profile.get_profile()
+    for profile in profiles:
+        if profile.user.id == current_user.id:
+            if request.method == 'POST':
+                form = ProjectForm(request.POST,request.FILES)
+                if form.is_valid():
+                    project = form.save(commit=False)
+                    project.author = current_user
+                    project.profile = profile
+                    project.save()
+                    return redirect('home')
+            else:
+                form = ProjectForm()
+                
+                context = {
+                    'user':current_user,
+                    'form':form
+                }
+            return render(request,'project.html', context)
+
+@login_required(login_url='/accounts/login/')
 def new_profile(request):
     project = Project.objects.filter(author=request.user).order_by('-date_posted')
     if request.method == 'POST':
