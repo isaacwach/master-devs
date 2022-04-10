@@ -1,0 +1,27 @@
+body {
+    margin: auto;
+    font-family: "apercu",sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+}
+.footer-page li a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+.footer-page li {
+    display: inline;
+    font-size: 16px;
+    padding: 10px;
+  
+}
+.copyright{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+}
+.avatar{
+    justify-content: center;
+}
+.circle {
+    justify-content: center;
+}
