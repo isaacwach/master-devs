@@ -30,4 +30,7 @@ class RatingForm(forms.ModelForm):
         usability_rating = forms.IntegerField()
         content_rating = forms.IntegerField()
         comment = forms.CharField(widget=forms.Textarea(attrs={"class": "form-control","placeholder": "Leave a comment"}))    
-        exclude =['project','author']    
+        exclude =['project','author']  
+
+class NewsLetterForm(forms.Form):
+    email = forms.EmailField(label='Email')

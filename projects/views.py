@@ -61,28 +61,18 @@ def project(request):
             }
             return render(request,'project.html', context)
 
-@login_required(login_url='/accounts/login/')
-def project(request):
-    current_user = request.user
-    profiles = Profile.get_profile()
-    for profile in profiles:
-        if profile.user.id == current_user.id:
-            if request.method == 'POST':
-                form = ProjectForm(request.POST,request.FILES)
-                if form.is_valid():
-                    project = form.save(commit=False)
-                    project.author = current_user
-                    project.profile = profile
-                    project.save()
-                    return redirect('home')
-            else:
-                form = ProjectForm()
-                
-                context = {
-                    'user':current_user,
-                    'form':form
-                }
-            return render(request,'project.html', context)
+def projects(request):
+    if request.method == 'POST':
+        form = NewsLetterForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            recipient = NewsLetterRecipients(name = name,email =email)
+            recipient.save()
+            HttpResponseRedirect('projects')
+    else:
+        form = NewsLetterForm()
+    return render(request, 'project.html', {"date": date,"letterForm":form})
 
 @login_required(login_url='/accounts/login/')
 def new_profile(request):
@@ -225,3 +215,11 @@ class ProjectDescription(APIView):
 def logout(request):
     django_logout(request)
     return  HttpResponseRedirect('/')
+
+def newsletter(request):
+    email = request.POST.get('email')
+
+    recipient = NewsLetterRecipients(email=email)
+    recipient.save()
+    data = {'success': 'You have been successfully added to mailing list'}
+    return JsonResponse(data)

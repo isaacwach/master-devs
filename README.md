@@ -10,7 +10,7 @@ This application allows users to post their projects. Other users and peers can 
 * View projects overall score
 * View my profile page
 ## Landing page
-![Landing page photo](https://github.com/isaacwach/zacs-gallery/blob/master/images/Screenshot_2022-03-29_12-23-22.png)
+![Landing page photo](https://github.com/isaacwach/zacs-galery/blob/master/images/Scenshot_2022-03-29_12-23-22.png)
 ## Author information
 I am a full stack developer, with impeccable skills in web development, UI design, and problem solving skills using algorithms. Besides, i have knowlege in enterprise development, financial accounting and business management.
 

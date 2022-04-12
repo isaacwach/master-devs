@@ -168,3 +168,6 @@ class Ratings(models.Model):
     def get_ratings(cls):
         ratings = Ratings.objects.all()
         return rating
+
+class NewsLetterRecipients(models.Model):
+    email = models.EmailField(blank=True, null=True)
